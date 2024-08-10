@@ -1,0 +1,11 @@
+.container{
+    display: grid;
+    grid-template-rows: auto 1fr auto;
+    grid-template-areas: 
+        "navbar"
+        "main"
+        "footer";
+    height: auto;
+    min-height: 100vh;
+}
+

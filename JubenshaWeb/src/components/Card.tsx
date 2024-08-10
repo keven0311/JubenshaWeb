@@ -1,0 +1,25 @@
+import '../styles/Card.css'
+
+interface CardProps {
+    title:string;
+    image?:string;
+    price: string | number;
+}
+
+const Card:React.FC<CardProps> = ({title, image, price}) => {
+  return (
+    <div className="card">
+        {image ? 
+            <img src={image} alt={title} className="card-image"/>
+            :
+            <img src='/infinity-space-logo.jpg' alt={title} className='card-image'/>
+        }
+        <div className="card-content">
+            <h2 className="card-title">{title}</h2>
+            <p className="card-price">{price}</p>
+        </div>
+    </div>
+  )
+}
+
+export default Card

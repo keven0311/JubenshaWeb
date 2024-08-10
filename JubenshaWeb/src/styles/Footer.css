@@ -1,0 +1,28 @@
+.footer-div{
+    grid-area: footer;
+    width: 100%;
+    background-color: black;
+    color: white;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    padding-bottom: 30px;
+    padding-top: 15px;
+}
+
+.footer-right{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.footer-right p{
+    margin: 0;
+    font-size: 1.5rem;
+    font-weight: 800;
+}
+
+.wechat-sq-code-img{
+    width: 154px;
+    height: 154px;
+}
