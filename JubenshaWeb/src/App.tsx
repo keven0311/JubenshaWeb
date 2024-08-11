@@ -4,6 +4,7 @@ import Home from './pages/Home'
 import Navbar from './components/Navbar'
 import Footer from './components/Footer'
 import List from './pages/List';
+import SingleJuben from './pages/SingleJuben';
 
 
 function App() {
@@ -15,6 +16,7 @@ function App() {
       <Routes>
         <Route path='/' element={<Home/>}/>
         <Route path='/list' element={<List/>}/>
+        <Route path='/list/:title' element={<SingleJuben/>}/>
       </Routes>
       <Footer/>
     </div>

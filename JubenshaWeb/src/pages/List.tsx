@@ -1,5 +1,5 @@
 import '../styles/List.css'
-import { useEffect, useState } from 'react'
+import { useState } from 'react'
 import Card from "../components/Card"
 import Sorting from '../components/Sorting'
 import Sorting_Price from '../components/Sorting_Price'

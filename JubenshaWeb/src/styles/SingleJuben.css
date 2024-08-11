@@ -1,0 +1,32 @@
+.singlejuben-wrapper{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.singlejuben-div{
+    display: grid;
+    grid-template-areas: 
+        "carousel-div content-div"
+        "carousel-div content-div"
+        "description-div description-div";
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: auto 1fr;
+    gap: 16px;
+    width: 85%;
+    align-items: center;
+}
+
+.carousel-div{
+    grid-area: carousel-div;
+    height: 100%;
+    
+}
+
+.content-div{
+    grid-area: content-div;
+}
+
+.description-div{
+    grid-area: description-div;
+}

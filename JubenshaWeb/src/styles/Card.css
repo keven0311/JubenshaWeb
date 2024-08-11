@@ -10,6 +10,11 @@
     display: flex;
     flex-direction: column;
     align-items: center;
+    text-decoration: none;
+}
+
+.card-link{
+    text-decoration: none;
 }
 
 .card:hover{
@@ -24,9 +29,12 @@
 .card-title{
     font-size: 1.5em;
     margin: 0 0 10px;
+    text-decoration: none;
+    color: black;
 }
 
 .card-price{
     font-size: 1.2em;
     color: #616161;
+    text-decoration: none;
 }
