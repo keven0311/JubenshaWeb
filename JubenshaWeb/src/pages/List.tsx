@@ -1,5 +1,5 @@
 import '../styles/List.css'
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import Card from "../components/Card"
 import Sorting from '../components/Sorting'
 import Sorting_Price from '../components/Sorting_Price'
@@ -23,9 +23,9 @@ function List() {
 
     // console.log(filteredData)
     
-    // useEffect(() => {
-    //     console.log(criteria)
-    // },[criteria])
+    useEffect(() => {
+        console.log(criteria)
+    },[criteria])
 
   return (
     <div className="list-div">
