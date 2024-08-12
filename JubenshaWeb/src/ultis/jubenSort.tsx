@@ -36,6 +36,9 @@ const jubenSort = (juben:Juben[], criteria:Criteria):Juben[] => {
               return false;
             } else if (key === 'members') {
               // Handle list of acceptable members
+              if ((criterion as number[]).includes(0)){
+                return true;
+              }
               if (typeof value === 'number') {
                 return (criterion as number[]).includes(value);
               }

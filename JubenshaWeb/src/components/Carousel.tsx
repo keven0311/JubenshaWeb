@@ -1,5 +1,6 @@
 import React, { useState } from 'react'
 import '../styles/Carousel.css'
+import CarouselThumbnail from './CarouselThumbnail';
 
 interface CarouselProps{
     children: React.ReactNode[];
@@ -40,8 +41,8 @@ const Carousel:React.FC<CarouselProps> = ({children }) => {
                     className={`carousel-preview-image-div ${index === curr ? 'active' : ''}`}
                     key={index}
                     onClick={() => goToSlide(index)}>
-                        {React.cloneElement(children[index] as React.ReactElement, {className: 'thumbnail'} )}
-
+                        {/* {React.cloneElement(children[index] as React.ReactElement, {className: 'thumbnail'} )} */}
+                        <CarouselThumbnail slide={children[index]}/>
                 </div>
             ))}
         </div>
