@@ -14,6 +14,7 @@ interface SortProps{
 
 const Sorting:React.FC<SortProps> = ({typeName,typeNameCN, types, setCriteria}) => {
     const [isVisible, setIsVisible] = useState(false);
+    const [checkedValues, setCheckedValues] = useState<string[]>([]);
     
     function toggleVisible(){
         setIsVisible(!isVisible)
@@ -24,15 +25,34 @@ const Sorting:React.FC<SortProps> = ({typeName,typeNameCN, types, setCriteria}) 
 
         setCriteria(prevCriteria => {
             const newCriteria = { ...prevCriteria};
-            if(checked){
-                if(!newCriteria[name]?.includes(value)){
-                    newCriteria[name] = [...(newCriteria[name] || []), value]
+
+            if(value === '0'){
+                if(checked){
+                    newCriteria[name] = ['0'];
+                    setCheckedValues(['0'])
+                    
+                }else{
+                    newCriteria[name] = (newCriteria[name] || []).filter(v => v!== value);
+                    
                 }
             }else{
-                newCriteria[name] = (newCriteria[name] || []).filter(v => v !== value);
+                if(checked){
+                    if(!newCriteria[name]?.includes(value)){
+                        newCriteria[name] = [...(newCriteria[name] || []), value]
+                    }
+                }else{
+                    newCriteria[name] = (newCriteria[name] || []).filter(v => v !== value);
+                }
+
+                if(newCriteria[name]?.length > 0 && newCriteria[name].includes('0')){
+                    newCriteria[name] = newCriteria[name].filter(v => v!== '0')
+                }
+
+                setCheckedValues(newCriteria[name] || []);
             }
+
             return newCriteria
-        })
+        })    
     }
 
   return (
@@ -47,6 +67,7 @@ const Sorting:React.FC<SortProps> = ({typeName,typeNameCN, types, setCriteria}) 
                         <input type='checkbox' 
                                 name={typeName} 
                                 value={type.value}
+                                checked={checkedValues.includes(type.value)}
                                 onChange={handleCheckboxChnage}/>
                         <label htmlFor={type.name}>{type.name}</label>
                     </div>

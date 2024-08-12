@@ -10,18 +10,18 @@ function List() {
     // const [sortedList, setSortedList] = useState([]);
     const [criteria, setCriteria] = useState({})
 
-    // const jubenData = [
-    //     { title: 'Juben1', image: '/image1.jpg', price: 45, type: 'type1', theme: 'Fantasy', members: 5, background: 'Space', difficulty: 'Medium', mod: 'Official' },
-    //     { title: 'Juben2', image: '/image2.jpg', price: 60, type: 'type2', theme: 'Sci-Fi', members: 4, background: 'Desert', difficulty: 'Hard', mod: 'Fan-made' },
-    //     { title: 'Juben3', image: '/image3.jpg', price: 75, type: 'type1', theme: 'Fantasy', members: 6, background: 'Jungle', difficulty: 'Easy', mod: 'Official' },
-    //     { title: 'Juben4', image: '/image4.jpg', price: 85, type: 'type1', theme: 'Fantasy', members: 5, background: 'Ocean', difficulty: 'Medium', mod: 'Official' },
-    // ]
+    const jubenData = [
+        { title: 'Juben1', image: '/image1.jpg', price: 45, type: 'type1', theme: 'Fantasy', members: 5, background: 'Space', difficulty: 'Medium', mod: 'Official' },
+        { title: 'Juben2', image: '/image2.jpg', price: 60, type: 'type2', theme: 'Sci-Fi', members: 4, background: 'Desert', difficulty: 'Hard', mod: 'Fan-made' },
+        { title: 'Juben3', image: '/image3.jpg', price: 75, type: 'type1', theme: 'Fantasy', members: 6, background: 'Jungle', difficulty: 'Easy', mod: 'Official' },
+        { title: 'Juben4', image: '/image4.jpg', price: 85, type: 'type1', theme: 'Fantasy', members: 5, background: 'Ocean', difficulty: 'Medium', mod: 'Official' },
+    ]
 
-    // const criteria = {price:[45,80], type:['type2']};
+    const criteriaTest = {members:[0], type:['type2']};
 
-    // const filteredData = jubenSort(jubenData,criteria);
+    const filteredData = jubenSort(jubenData,criteriaTest);
 
-    // console.log(filteredData)
+    console.log(filteredData)
     
     useEffect(() => {
         console.log(criteria)
@@ -35,6 +35,7 @@ function List() {
             <Sorting    typeNameCN='人数' 
                         typeName='members'
                         types={[
+                                            {name:'All',value:'0'},
                                             {name:'5人及以下',value:'5'},
                                             {name:'6人',value:'6'},
                                             {name:'7人',value:'7'},
