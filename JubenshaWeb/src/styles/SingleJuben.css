@@ -7,6 +7,7 @@
 .singlejuben-div{
     display: grid;
     grid-template-areas: 
+        "navigation navigation"
         "carousel-div content-div"
         "carousel-div content-div"
         "description-div description-div";
@@ -29,4 +30,40 @@
 
 .description-div{
     grid-area: description-div;
+}
+
+.singlejuben-navigation{
+    grid-area: navigation;
+    display: flex;
+    margin-bottom: 5%;
+    font-weight: 500;
+    font-size: 1.1rem;
+    align-items: center;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+.singlejuben-link{
+    text-decoration: none;
+    color: black;
+    line-height: 1.1rem;
+    vertical-align: middle;
+}
+
+.singlejuben-navigation-slash{
+    margin: 0 5px;
+    line-height: 1.1rem;
+    vertical-align: middle;
+}
+
+.singlejuben-navigation-slash span{
+    line-height: 1.1rem;
+    vertical-align: middle;
+}
+
+.singlejuben-navigation-title{
+    color: grey;
+}
+
+.singlejuben-link-home{
+    color: grey;
 }

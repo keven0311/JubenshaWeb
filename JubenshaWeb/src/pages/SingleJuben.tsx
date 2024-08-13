@@ -1,7 +1,9 @@
 import '../styles/SingleJuben.css'
 import Carousel from '../components/Carousel'
+import { Link, useParams } from 'react-router-dom'
 
 function SingleJuben() {
+    const { title } = useParams();
 
     const testImages = [
         "/infinity-space-logo.jpg",
@@ -12,6 +14,18 @@ function SingleJuben() {
   return (
     <div className="singlejuben-wrapper">
         <div className='singlejuben-div'>
+            <div className='singlejuben-navigation'>
+                
+                    <Link to={'/'} className='singlejuben-link singlejuben-link-home'>Home</Link>
+                
+                <span className='singlejuben-navigation-slash'>/</span>
+                
+                    <Link to={'/list'} className='singlejuben-link'>剧本列表</Link>
+                
+                <span className='singlejuben-navigation-slash'>/</span>
+
+                    <span className='singlejuben-navigation-title'>{title}</span>
+            </div>
             <div className="carousel-div">
                 <Carousel>
                     {testImages.map((img,index )=> (
