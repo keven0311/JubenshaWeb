@@ -20,8 +20,6 @@ const Sorting:React.FC<SortProps> = ({typeName,typeNameCN, types, setCriteria}) 
         setIsVisible(!isVisible)
     }
 
-    
-
     const handleCheckboxChnage = (e:React.ChangeEvent<HTMLInputElement>) => {
         const {name, value, checked} = e.target;
 
@@ -30,11 +28,11 @@ const Sorting:React.FC<SortProps> = ({typeName,typeNameCN, types, setCriteria}) 
 
             if(value === '0'){
                 if(checked){
-                    newCriteria[name] = ['0'];
+                    delete newCriteria[name];
                     setCheckedValues(['0'])
                     
                 }else{
-                    newCriteria[name] = [];
+                    newCriteria[name] = []
                     setCheckedValues([]);
                 }
             }else{
@@ -46,7 +44,7 @@ const Sorting:React.FC<SortProps> = ({typeName,typeNameCN, types, setCriteria}) 
                     newCriteria[name] = (newCriteria[name] || []).filter(v => v !== value);
                 }
 
-                if(newCriteria[name]?.length > 0 && newCriteria[name].includes('0')){
+                if(newCriteria[name]?.includes('0')){
                     newCriteria[name] = newCriteria[name].filter(v => v!== '0')
                 }
 

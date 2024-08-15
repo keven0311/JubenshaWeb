@@ -34,6 +34,10 @@ const jubenSort = (juben:Juben[], criteria:Criteria):Juben[] => {
         Object.keys(criteria).every(key => {
           const criterion = criteria[key as keyof Criteria];
           const value = item[key as keyof Juben];
+
+          if(!criterion || criterion.length === 0){
+            return true;
+          }
     
           if (Array.isArray(criterion)) {
             if (key === 'price') {
@@ -43,10 +47,15 @@ const jubenSort = (juben:Juben[], criteria:Criteria):Juben[] => {
                 return value >= min && value <= max;
               }
               return false;
-            } else if (['num_players', 'theme','category','background'].includes(key)) {
-              // Handle list of acceptable members
+            }else if (key === 'num_players'){
+              if(Array.isArray(value)){
+                const criteriaNumbers = (criterion as string[]).map(Number);
+                return (value as number[]).some(val => criteriaNumbers.includes(val));
+              }
+            } else if (['theme','category','background'].includes(key)) {
+              // Handle list of acceptable players
               if (Array.isArray(value)){
-                return (value as (string | number)[]).some(val => (criterion as (string | number)[]).includes(val));
+                return (value as string[]).some(val => (criterion as string[]).includes(val));
               }
               return false;
             } else {
