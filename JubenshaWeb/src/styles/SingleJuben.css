@@ -35,6 +35,7 @@
 .singlejuben-navigation{
     grid-area: navigation;
     display: flex;
+    justify-content: space-between;
     margin-bottom: 5%;
     font-weight: 500;
     font-size: 1.1rem;

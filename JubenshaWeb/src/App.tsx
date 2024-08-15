@@ -1,10 +1,12 @@
 import './styles/App.css'
-import { Routes, Route } from "react-router-dom";
+import { Routes } from 'react-router';
+import {  Route } from "react-router-dom";
 import Home from './pages/Home'
 import Navbar from './components/Navbar'
 import Footer from './components/Footer'
 import List from './pages/List';
 import SingleJuben from './pages/SingleJuben';
+
 
 
 function App() {

@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, {  useState } from 'react'
 
 interface Type{
     name:string;
@@ -20,6 +20,8 @@ const Sorting:React.FC<SortProps> = ({typeName,typeNameCN, types, setCriteria}) 
         setIsVisible(!isVisible)
     }
 
+    
+
     const handleCheckboxChnage = (e:React.ChangeEvent<HTMLInputElement>) => {
         const {name, value, checked} = e.target;
 
@@ -32,8 +34,8 @@ const Sorting:React.FC<SortProps> = ({typeName,typeNameCN, types, setCriteria}) 
                     setCheckedValues(['0'])
                     
                 }else{
-                    newCriteria[name] = (newCriteria[name] || []).filter(v => v!== value);
-                    
+                    newCriteria[name] = [];
+                    setCheckedValues([]);
                 }
             }else{
                 if(checked){
@@ -68,7 +70,8 @@ const Sorting:React.FC<SortProps> = ({typeName,typeNameCN, types, setCriteria}) 
                                 name={typeName} 
                                 value={type.value}
                                 checked={checkedValues.includes(type.value)}
-                                onChange={handleCheckboxChnage}/>
+                                onChange={handleCheckboxChnage}
+                                />
                         <label htmlFor={type.name}>{type.name}</label>
                     </div>
                     ))}

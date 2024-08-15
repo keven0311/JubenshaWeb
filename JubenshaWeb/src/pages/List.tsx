@@ -4,27 +4,29 @@ import Card from "../components/Card"
 import Sorting from '../components/Sorting'
 import Sorting_Price from '../components/Sorting_Price'
 import jubenSort from '../ultis/jubenSort'
+import testData from '../ultis/testData'
 
 
 function List() {
-    // const [sortedList, setSortedList] = useState([]);
+    const [sortedList, setSortedList] = useState(testData);
     const [criteria, setCriteria] = useState({})
 
-    const jubenData = [
-        { title: 'Juben1', image: '/image1.jpg', price: 45, type: 'type1', theme: 'Fantasy', members: 5, background: 'Space', difficulty: 'Medium', mod: 'Official' },
-        { title: 'Juben2', image: '/image2.jpg', price: 60, type: 'type2', theme: 'Sci-Fi', members: 4, background: 'Desert', difficulty: 'Hard', mod: 'Fan-made' },
-        { title: 'Juben3', image: '/image3.jpg', price: 75, type: 'type1', theme: 'Fantasy', members: 6, background: 'Jungle', difficulty: 'Easy', mod: 'Official' },
-        { title: 'Juben4', image: '/image4.jpg', price: 85, type: 'type1', theme: 'Fantasy', members: 5, background: 'Ocean', difficulty: 'Medium', mod: 'Official' },
-    ]
+    // const jubenData = [
+    //     { title: 'Juben1', image: '/image1.jpg', price: 45, type: 'type1', theme: 'Fantasy', members: 5, background: 'Space', difficulty: 'Medium', mod: 'Official' },
+    //     { title: 'Juben2', image: '/image2.jpg', price: 60, type: 'type2', theme: 'Sci-Fi', members: 4, background: 'Desert', difficulty: 'Hard', mod: 'Fan-made' },
+    //     { title: 'Juben3', image: '/image3.jpg', price: 75, type: 'type1', theme: 'Fantasy', members: 6, background: 'Jungle', difficulty: 'Easy', mod: 'Official' },
+    //     { title: 'Juben4', image: '/image4.jpg', price: 85, type: 'type1', theme: 'Fantasy', members: 5, background: 'Ocean', difficulty: 'Medium', mod: 'Official' },
+    // ]
 
-    const criteriaTest = {members:[0], type:['type2']};
+    const criteriaTest = {theme:['机制']};
 
-    const filteredData = jubenSort(jubenData,criteriaTest);
+    const filteredData = jubenSort(testData ,criteriaTest);
 
     console.log(filteredData)
     
     useEffect(() => {
         console.log(criteria)
+        setSortedList(jubenSort(testData,criteria));
     },[criteria])
 
   return (
@@ -33,7 +35,7 @@ function List() {
             <h2 className='sorting-tag'>类型/人数</h2>
             
             <Sorting    typeNameCN='人数' 
-                        typeName='members'
+                        typeName='num_players'
                         types={[
                                             {name:'All',value:'0'},
                                             {name:'5人及以下',value:'5'},
@@ -48,7 +50,7 @@ function List() {
                         setCriteria={setCriteria}
                         />
             <Sorting    typeNameCN='类型' 
-                        typeName='type'
+                        typeName='category'
                         types={[{name:'还原',value:'还原'},
                                             {name:'开放',value:'开放'},
                                             {name:'本格',value:'本格'},
@@ -94,12 +96,24 @@ function List() {
                         />
 
         </div>
+
+        
         <div className="list-right">
-            <Card 
+            {
+                sortedList.map((juben,index) => (
+                    <Card
+                        key={index}
+                        title={juben.title}
+                        image={juben.thumbnail}
+                        price={juben.price}
+                        />
+                ))
+            }
+            {/* <Card 
                 title="juben1"
-                image="/infinity-space-logo.jpg"
+                image={["/infinity-space-logo.jpg"]}
                 price="$45.00"
-            />
+            /> */}
         </div>
     </div>
   )

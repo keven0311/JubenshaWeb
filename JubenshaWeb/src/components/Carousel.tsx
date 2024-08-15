@@ -29,10 +29,10 @@ const Carousel:React.FC<CarouselProps> = ({children }) => {
         </div>
         <div className="carousel-button-div">
             <button className='carousel-button' onClick={prev}>
-                prev
+                {"<"}
             </button>
             <button className='carousel-button' onClick={next}>
-                next
+                {">"}
             </button>
         </div>
         <div className="carousel-preview">

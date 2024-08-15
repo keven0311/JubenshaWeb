@@ -1,23 +1,32 @@
 interface Juben {
     title:string;
-    image?:string;
     price:number;
-    type:string;
-    theme:string;
-    members:number;
-    background:string;
-    difficulty:string;
-    mod:string;
+    player_type?:string;     //3男3女
+    difficulty:string;      //难度
+    mod:string;             //形式
+    description:string;     //剧本信息
+    summary:string;         //剧本背景介绍
+    num_players:number[];   //人数
+    theme:string[];         //题材
+    category:string[];      //类型
+    background:string[];    //背景
+    thumbnail?:string[];   //图片
+    
+    //internal column
+    playtime?:number;  
+    comment?:string;  
 }
 
 interface Criteria {
     price?: number[];
     type?: string[];
-    theme?: string[];
-    members?: number[];
+    category?: string[];
+    num_players?: number[];
     background?: string[];
     difficulty?: string[];
     mod?: string[];
+    playtime?:number[];
+    theme?:string[];
   }
 
 const jubenSort = (juben:Juben[], criteria:Criteria):Juben[] => {
@@ -34,17 +43,14 @@ const jubenSort = (juben:Juben[], criteria:Criteria):Juben[] => {
                 return value >= min && value <= max;
               }
               return false;
-            } else if (key === 'members') {
+            } else if (['num_players', 'theme','category','background'].includes(key)) {
               // Handle list of acceptable members
-              if ((criterion as number[]).includes(0)){
-                return true;
-              }
-              if (typeof value === 'number') {
-                return (criterion as number[]).includes(value);
+              if (Array.isArray(value)){
+                return (value as (string | number)[]).some(val => (criterion as (string | number)[]).includes(val));
               }
               return false;
             } else {
-              // Handle string arrays (type, theme, background, difficulty, mod)
+              // Handle string arrays (type, category, background, difficulty, mod)
               return typeof value === 'string' && (criterion as string[]).includes(value);
             }
           } else if (typeof criterion === 'string') {

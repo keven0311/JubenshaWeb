@@ -15,16 +15,19 @@ function SingleJuben() {
     <div className="singlejuben-wrapper">
         <div className='singlejuben-div'>
             <div className='singlejuben-navigation'>
-                
+                <div className='singlejuben-navigation-left'>
                     <Link to={'/'} className='singlejuben-link singlejuben-link-home'>Home</Link>
-                
-                <span className='singlejuben-navigation-slash'>/</span>
-                
+                    <span className='singlejuben-navigation-slash'>/</span>
                     <Link to={'/list'} className='singlejuben-link'>剧本列表</Link>
-                
-                <span className='singlejuben-navigation-slash'>/</span>
-
+                    <span className='singlejuben-navigation-slash'>/</span>
                     <span className='singlejuben-navigation-title'>{title}</span>
+                </div>
+                {/* !need pointer to prev and next juben*/}
+                <div className='singlejuben-navigation-right'>
+                    <Link to={''} className='singlejuben-link'>{"< Prev"}</Link>
+                    <span className='singlejuben-navigation-slash'>/</span>
+                    <Link to={''} className='singlejuben-link'>{"Next >"}</Link>
+                </div>
             </div>
             <div className="carousel-div">
                 <Carousel>
