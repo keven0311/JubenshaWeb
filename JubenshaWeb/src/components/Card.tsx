@@ -3,11 +3,11 @@ import { useNavigate } from 'react-router';
 
 interface CardProps {
     title:string;
-    image?:string[];
+    thumbnail?:string[];
     price: string | number;
 }
 
-const Card:React.FC<CardProps> = ({title, image, price}) => {
+const Card:React.FC<CardProps> = ({title, thumbnail, price}) => {
   const navigate = useNavigate();
 
   const handleNavigate = () =>{
@@ -16,8 +16,8 @@ const Card:React.FC<CardProps> = ({title, image, price}) => {
   return (
    
       <div className="card" onClick={handleNavigate}>
-            {image && image.length >= 1 ? 
-                <img src={image[0]} alt={title} className="card-image"/>
+            {thumbnail && thumbnail.length >= 1 ? 
+                <img src={thumbnail[0]} alt={title} className="card-image"/>
                 :
                 <img src='/infinity-space-logo.jpg' alt={title} className='card-image'/>
             }

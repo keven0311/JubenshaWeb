@@ -5,17 +5,19 @@ import Sorting from '../components/Sorting'
 import Sorting_Price from '../components/Sorting_Price'
 import jubenSort from '../ultis/jubenSort'
 import testData from '../ultis/testData'
+import { Juben } from '../ultis/jubenSort'
 
 
 function List() {
-    const [sortedList, setSortedList] = useState([]);
+    const [sortedList, setSortedList] = useState<Juben[]>([]);
     const [criteria, setCriteria] = useState({})
     
     useEffect(() => {
         // console.log(criteria)
         const updatedJuben = jubenSort(testData,criteria)
-        console.log(updatedJuben)
         setSortedList(updatedJuben);
+        localStorage.setItem('sortedList',JSON.stringify(updatedJuben))
+        
     },[criteria])
 
   return (
@@ -91,7 +93,7 @@ function List() {
                         setCriteria={setCriteria}
                         />
             {
-                Object.keys(criteria).length > 0 
+                Object.entries(criteria).length > 0 
                 ?
                 <button className='clear-filter-button' onClick={()=> setCriteria({})}>Clear Filter x</button>
                 :
@@ -106,7 +108,7 @@ function List() {
                     <Card
                         key={index}
                         title={juben.title}
-                        image={juben.thumbnail}
+                        thumbnail={juben.thumbnail}
                         price={juben.price}
                         />
                 ))

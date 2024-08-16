@@ -2,6 +2,9 @@
     display: flex;
     justify-content: center;
     align-items: center;
+    height: auto;
+    width:100%;
+    margin: 10% 0;
 }
 
 .singlejuben-div{
@@ -10,26 +13,43 @@
         "navigation navigation"
         "carousel-div content-div"
         "carousel-div content-div"
-        "description-div description-div";
+        "summary-div summary-div";
     grid-template-columns: 1fr 1fr;
     grid-template-rows: auto 1fr;
     gap: 16px;
-    width: 85%;
+    width: 75%;
     align-items: center;
 }
+
 
 .carousel-div{
     grid-area: carousel-div;
     height: 100%;
-    
+    width: 100%;
+    overflow: hidden;
 }
 
 .content-div{
     grid-area: content-div;
+    height: 100%;
+    width: 100%;
 }
 
-.description-div{
-    grid-area: description-div;
+.content-category{
+    font-weight: 600;
+}
+
+.summary-div{
+    grid-area: summary-div;
+    width: 50%;
+}
+
+.content-description{
+    margin-top: 5%;
+}
+
+.content-description-text{
+    margin: 0;
 }
 
 .singlejuben-navigation{

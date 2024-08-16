@@ -1,4 +1,4 @@
-interface Juben {
+export interface Juben {
     title:string;
     price:number;
     player_type?:string;     //3男3女
