@@ -6,7 +6,9 @@ import { Juben } from '../ultis/jubenSort';
 
 function SingleJuben() {
     const { title } = useParams();
+    const [storedJubenList, setSortedJubenList ] = useState<Juben[] | null>(null);
     const [currentJuben, setCurrentJuben] = useState<Juben | null>(null);
+    const [currentJubenIndex, setCurrentJubenIndex] = useState<number | null>(null);
 
     
     useEffect(() => {
@@ -14,8 +16,16 @@ function SingleJuben() {
         
         if(storedSortedList){
             const sortedList: Juben[] = JSON.parse(storedSortedList);
-            const foundJuben = sortedList.find(juben => juben.title === title);
-            setCurrentJuben(foundJuben || null);
+            setSortedJubenList(sortedList);
+            const foundIndex = sortedList.findIndex(juben => juben.title === title);
+            if(foundIndex !== -1){
+                setCurrentJuben(sortedList[foundIndex])
+                setCurrentJubenIndex(foundIndex);
+            }else{
+                setCurrentJuben(null);
+                setCurrentJubenIndex(null);
+            }
+            
         }
     },[title])
 
@@ -42,9 +52,13 @@ function SingleJuben() {
                 </div>
                 {/* !need pointer to prev and next juben*/}
                 <div className='singlejuben-navigation-right'>
-                    <Link to={``} className='singlejuben-link'>{"< Prev"}</Link>
-                    <span className='singlejuben-navigation-slash'>/</span>
-                    <Link to={''} className='singlejuben-link'>{"Next >"}</Link>
+                        {storedJubenList && currentJubenIndex !== null && (
+                            <>
+                                <Link to={`/list/${storedJubenList[(currentJubenIndex - 1 + storedJubenList!.length) % storedJubenList!.length].title}`} className='singlejuben-link'>{"< Prev"}</Link>
+                                <span className='singlejuben-navigation-slash'>/</span>
+                                <Link to={`/list/${storedJubenList[(currentJubenIndex + 1) % storedJubenList!.length].title}`} className='singlejuben-link'>{"Next >"}</Link>
+                            </>
+                        )}
                 </div>
             </div>
             <div className="carousel-div">
@@ -88,7 +102,7 @@ function SingleJuben() {
                 </div>
             </div>
 
-            <div className='summary-div'>
+            {/* <div className='summary-div'>
             {  
                 currentJuben ? (
                     splitStringByNextLine(currentJuben?.summary).map((line,index) => (
@@ -98,7 +112,7 @@ function SingleJuben() {
                         <p>summary not found</p>
                     )
             }
-            </div>
+            </div> */}
         </div>
     </div>
   )
