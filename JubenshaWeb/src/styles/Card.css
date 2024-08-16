@@ -1,6 +1,6 @@
 .card{
     width: 20%;
-    height: 30%;
+    /* height: 30%; */
     overflow: hidden;
     transition: transform 0.3s ease;
     display: flex;

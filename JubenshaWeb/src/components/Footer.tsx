@@ -4,7 +4,7 @@ function Footer() {
   return (
     <div className="footer-div">
       <div className='footer-left'>
-        <img className='wechat-sq-code-img' src='/wechat-sq-code-new.png' alt='Wechat SQ code'/>
+        <img className='wechat-sq-code-img' src='/wechat-sq-code.png' alt='Wechat SQ code'/>
       </div>
       <div className='footer-right'>
         <p>Tel:(202)701-9391</p>
