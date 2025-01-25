@@ -1,10 +1,12 @@
 .list-div{
+    grid-area: main;
     display: flex;
     flex-direction: row;
     justify-content: space-evenly;
     margin: 20px 20px;
     height: 110vh;
     gap: 30px;
+    overflow: auto;
 }
 
 .list-left{

@@ -10,7 +10,7 @@ function Footer() {
         <p>Tel:(202)701-9391</p>
         <p>Address: 450 Maple Ave,</p>
         <p>E Suit #310, Vienna, VA</p>
-        <small>@2024 Infinity Space INC.</small>
+        <small>@2024 by Infinity Space INC.</small>
       </div>
     </div>
   )

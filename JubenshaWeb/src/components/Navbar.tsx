@@ -4,7 +4,7 @@ function Navbar() {
   return (
     <div className='navbar-div'>
         <div className='navbar-left'>
-          <span className='logo-text'>GouTaoTao</span>
+          <span className='logo-text'>INFINITY SPACE</span>
         </div>
         <div className='navbar-right'>
           <a className='navbar-right-link' href='/'>主页</a>

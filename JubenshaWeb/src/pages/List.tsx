@@ -100,8 +100,6 @@ function List() {
                 <div></div>
             }
         </div>
-
-        
         <div className="list-right">
             {
                 sortedList.map((juben,index) => (
